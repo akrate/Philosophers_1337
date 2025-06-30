@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 23:03:39 by aoussama          #+#    #+#             */
-/*   Updated: 2025/06/26 23:04:37 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/06/30 17:18:19 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ void checking_nbr(char *str)
         if (str[i] < '0' || str[i] > '9')
         {
             write (2,"this number is not correct\n",27);
-            exit (1);
+            return (1);
         }
         i++;
     }
+    return (0);
 }

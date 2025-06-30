@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 22:54:48 by aoussama          #+#    #+#             */
-/*   Updated: 2025/06/27 21:10:10 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/06/30 18:00:15 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,42 @@ t_info init_struct(int ac,char **av)
         info.nbr_eat = -1;
     return (info);
 }
-void init_data2(t_data *data)
+
+t_philo *init_data(t_info info)
 {
-    
-}
-t_data init_data(t_info info)
-{
-    t_data *philo;
+    t_philo *philo;
     int i;
 
-    philo = malloc(sizeof(t_data) * info.philo);
+    philo = malloc(sizeof(t_philo) * info.philo);
+    if (philo ==  NULL)
+        return (NULL);
     i = 0;
     while(i < info.philo)
     {
         philo[i].id = i + 1;
-        
+        pthread_mutex_init(&philo[i].left_fork,NULL);
+        i++;
+    }
+    i = 0;
+    while (i < info.philo)
+    {
+        philo[i].right_fork = &philo[(i + 1) % info.philo].left_fork;
+        i++;
+    }
+    return (philo);
+}
+
+void init_info_and_link_philos(t_philo *philo,t_info *info)
+{
+    int i;
+    
+    i = 0;
+    pthread_mutex_init(&info->lock_dead,NULL);
+    pthread_mutex_init(&info->lock_print,NULL);
+
+    while (i < info->philo)
+    {
+        philo[i].info = info;
+        i++;
     }
 }
