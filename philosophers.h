@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:07:48 by aoussama          #+#    #+#             */
-/*   Updated: 2025/06/30 18:00:36 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/01 14:50:35 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <stdio.h>
- #include <pthread.h>
+#include <pthread.h>
+#include <sys/time.h>
 
 typedef struct s_info
 {
@@ -32,6 +33,16 @@ typedef struct s_info
     pthread_mutex_t lock_dead; // BACH MCHOF WACH MAT LIYA CHI PHILO BLAMA IW93 CHIMOCHKIL.
 } t_info;
 
+typedef struct s_philo
+{
+    int id;
+    unsigned long last_eat;
+    t_info *info;
+    pthread_t philo;
+    pthread_mutex_t left_fork;
+    pthread_mutex_t *right_fork;
+    
+} t_philo;
 // typedef struct s_data
 // {
 //     int id;
@@ -43,16 +54,6 @@ typedef struct s_info
 //     pthread_mutex_t *forks;
 // } t_data;
 
-typedef struct s_philo
-{
-    int id;
-    unsigned long last_eat;
-    t_info *info;
-    pthread_t philo;
-    pthread_mutex_t left_fork;
-    pthread_mutex_t *right_fork;
-    
-} t_philo;
 
 void checking_nbr(char *str);
 long	ft_atoi_use(char *str);
@@ -61,5 +62,6 @@ void checking_nbr(char *str);
 long	ft_atoi_use(char *str);
 t_philo *init_data(t_info info);
 void init_info_and_link_philos(t_philo *philo,t_info *info);
+unsigned long get_time_ms();
 
 #endif

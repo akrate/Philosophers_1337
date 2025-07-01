@@ -2,6 +2,13 @@
     "files.associations": {
         "cstdlib": "c",
         "algorithm": "c",
-        "format": "c"
+        "format": "c",
+        "array": "c",
+        "memory": "c",
+        "istream": "c",
+        "functional": "c",
+        "tuple": "c",
+        "utility": "c",
+        "variant": "c"
     }
 }

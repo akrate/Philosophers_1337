@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 22:54:48 by aoussama          #+#    #+#             */
-/*   Updated: 2025/06/30 18:00:15 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/01 14:33:14 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void init_info_and_link_philos(t_philo *philo,t_info *info)
     i = 0;
     pthread_mutex_init(&info->lock_dead,NULL);
     pthread_mutex_init(&info->lock_print,NULL);
-
+    info->start_time = get_time_ms();
     while (i < info->philo)
     {
         philo[i].info = info;

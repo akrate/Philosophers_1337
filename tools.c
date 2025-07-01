@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 23:03:39 by aoussama          #+#    #+#             */
-/*   Updated: 2025/06/30 17:18:19 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/01 17:27:21 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,18 @@ void checking_nbr(char *str)
         i++;
     }
     return (0);
+}
+unsigned long get_time_ms()
+{
+    struct timeval tv;
+    
+    gettimeofday(tv.tv_sec,NULL);
+    return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000)); // had return ky 3tina w9t b millisecond ==> kt3ni parti mn taniya.
+}
+
+void print_status(t_philo *philo,char *str)
+{
+    pthread_mutex_lock(&philo->info->lock_print);
+        printf("%ld %d %s\n",get_time_ms() - philo->info->start_time,philo->id,str);
+    pthread_mutex_unlock(&philo->info->lock_print);
 }
