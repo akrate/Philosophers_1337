@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 22:54:48 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/01 14:33:14 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:25:52 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ t_info init_struct(int ac,char **av)
 {
     t_info info;
 
-    info.philo = ft_atoi_use(av[1]);
-    info.die = ft_atoi_use(av[2]);
-    info.eating = ft_atoi_use(av[3]);
-    info.sleeping = ft_atoi_use(av[4]);
+    info.philo = ft_atoi_use(av[1]); // chehal mn philo 3ndi
+    info.die = ft_atoi_use(av[2]); // w9t li radi imot fih ila mklach
+    info.eating = ft_atoi_use(av[3]); // w9t li khaso iyakol fih
+    info.sleeping = ft_atoi_use(av[4]);// w9t li aykhso isleepi fih
     if (ac == 6)
-        info.nbr_eat = ft_atoi_use(av[5]);
+        info.nbr_eat = ft_atoi_use(av[5]);// chehal mn mra ayakol 3ad imot
     else
         info.nbr_eat = -1;
     return (info);
