@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 17:40:57 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/02 20:17:49 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:47:23 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void *routine_philo(void *arg)
     philo->last_eat = get_time_ms();
     
     if (philo->id % 2 == 0)
-    {
         usleep(500);
-    }
     while (1)
     {
         if (philo->id % 2 != 0)
@@ -39,9 +37,13 @@ void *routine_philo(void *arg)
             pthread_mutex_lock(&philo->left_fork);
                 print_status(philo,"has taken a fork\n");
         }
-                print_status(philo,"is eating\n");
+            print_status(philo,"is eating\n");
+            ft_usleep(philo->info->eating);
         pthread_mutex_unlock(&philo->left_fork);
         pthread_mutex_unlock(philo->right_fork);
+        print_status(philo,"is sleeping\n");
+        ft_usleep(philo->info->sleeping);
+        print_status(philo,"is thinking\n");
     }
     
 }

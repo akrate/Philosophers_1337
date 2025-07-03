@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:07:48 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/01 14:50:35 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:27:04 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ long	ft_atoi_use(char *str);
 t_philo *init_data(t_info info);
 void init_info_and_link_philos(t_philo *philo,t_info *info);
 unsigned long get_time_ms();
+void ft_usleep(unsigned long time);
 
 #endif
