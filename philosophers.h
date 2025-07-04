@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:07:48 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/03 16:27:04 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:02:59 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@
 
 typedef struct s_info
 {
+    int philo;
+    int die;
     int eating;
     int sleeping;
     int nbr_eat;
-    int die;
-    int philo;
+    int overflow;
     unsigned long start_time; // BACH N9DR NHSB W9T.
     int dead; // FALG BACH N3RF BLI CHI PHILO MAT.
     pthread_mutex_t lock_print; //BACH NPRINTI BLAMA IW93 LIYA MOCHKIL.
@@ -55,14 +56,15 @@ typedef struct s_philo
 // } t_data;
 
 
-void checking_nbr(char *str);
-long	ft_atoi_use(char *str);
-t_info init_struct(int ac,char **av);
-void checking_nbr(char *str);
+int checking_nbr(char *str);
 long	ft_atoi_use(char *str);
 t_philo *init_data(t_info info);
 void init_info_and_link_philos(t_philo *philo,t_info *info);
+t_info init_struct(int ac,char **av);
 unsigned long get_time_ms();
 void ft_usleep(unsigned long time);
+void *routine_philo(void *arg);
+void print_status(t_philo *philo,char *str);
+int check_int(int ac,t_info test);
 
 #endif

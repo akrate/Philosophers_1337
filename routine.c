@@ -6,11 +6,11 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 17:40:57 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/03 16:47:23 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:04:27 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <philosophers.h>
+#include "philosophers.h"
 
 void *routine_philo(void *arg)
 {
@@ -45,5 +45,4 @@ void *routine_philo(void *arg)
         ft_usleep(philo->info->sleeping);
         print_status(philo,"is thinking\n");
     }
-    
 }

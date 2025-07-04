@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 22:54:48 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/02 20:25:52 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/04 14:56:23 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ t_info init_struct(int ac,char **av)
         info.nbr_eat = ft_atoi_use(av[5]);// chehal mn mra ayakol 3ad imot
     else
         info.nbr_eat = -1;
+    if (check_int(ac,info) == 1)
+        info.overflow = 1;
+    else 
+        info.overflow = 0;
     return (info);
 }
 

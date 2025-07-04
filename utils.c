@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/19 16:07:08 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/04 14:57:00 by aoussama         ###   ########.fr       */
+/*   Created: 2025/07/04 13:59:30 by aoussama          #+#    #+#             */
+/*   Updated: 2025/07/04 15:15:05 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int main(int ac,char **av)
+int check_int(int ac,t_info test)
 {
-    if (ac < 5 || ac > 6)
-        return (write (2,"error\n",6),1);
-    t_info info;
-    t_philo *philosophers;
-    
-    info = init_struct(ac,av);
-    if (info.overflow == 1)
+    if (test.eating == -1)
         return (1);
-    philosophers = init_data(info);
-    if (philosophers == NULL)
+    if (test.philo == -1)
         return (1);
-    init_info_and_link_philos(philosophers,&info);
-    
+    if (test.sleeping == -1)
+        return (1);
+    if (test.die == -1)
+        return (1);
+    if (ac == 6)
+    {
+        if (test.nbr_eat == -1)
+            return (1);
+    }
+    return (0);
 }
-

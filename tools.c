@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 23:03:39 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/03 16:25:47 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/04 15:15:21 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ long	ft_atoi_use(char *str)
 	int	i;
 	long	result;
 
-    checking_nbr(str);
+    if (checking_nbr(str) == 1)
+        return (-1);
 	i = 0;
 	result = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
@@ -29,13 +30,13 @@ long	ft_atoi_use(char *str)
         if (result > 2147483647)
         {
             printf("nbr is long\n");
-            exit (1);
+            return (-1);
         }
 		i++;
 	}
 	return (result);
 }
-void checking_nbr(char *str)
+int checking_nbr(char *str)
 {
     int i;
 
@@ -55,7 +56,7 @@ unsigned long get_time_ms()
 {
     struct timeval tv;
     
-    gettimeofday(tv.tv_sec,NULL);
+    gettimeofday(&tv,NULL);
     return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000)); // had return ky 3tina w9t b millisecond ==> kt3ni parti mn taniya.
 }
 
@@ -72,7 +73,6 @@ void ft_usleep(unsigned long time)
     start = get_time_ms();
     while(get_time_ms() - start < time)
     {
-        sleep(100);
+        usleep(100);
     }
-    
 }
