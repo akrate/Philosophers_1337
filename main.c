@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:07:08 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/04 14:57:00 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/05 14:40:43 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ int main(int ac,char **av)
         return (write (2,"error\n",6),1);
     t_info info;
     t_philo *philosophers;
+    pthread_t monitor;
+    int i;
+
+    i = 0;
     
     info = init_struct(ac,av);
     if (info.overflow == 1)
@@ -26,6 +30,18 @@ int main(int ac,char **av)
     if (philosophers == NULL)
         return (1);
     init_info_and_link_philos(philosophers,&info);
-    
+    while (i < info.philo)
+    {
+        pthread_create(&philosophers[i].philo,NULL,&routine_philo,&philosophers[i]);
+        i++;
+    }
+    pthread_create(&monitor,NULL,&monitor_thread,philosophers);
+    i = 0;
+    while (i < info.philo)
+    {
+        pthread_join(philosophers[i].philo,NULL);
+        i++;
+    }
+    return (0);
 }
 

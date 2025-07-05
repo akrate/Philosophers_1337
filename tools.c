@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 23:03:39 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/04 15:15:21 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/05 15:40:49 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@ long	ft_atoi_use(char *str)
 	int	i;
 	long	result;
 
-    if (checking_nbr(str) == 1)
-        return (-1);
 	i = 0;
 	result = 0;
+    if(checking_nbr(str) == 1)
+    {
+        
+        return (-1);
+    }
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
@@ -57,7 +60,7 @@ unsigned long get_time_ms()
     struct timeval tv;
     
     gettimeofday(&tv,NULL);
-    return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000)); // had return ky 3tina w9t b millisecond ==> kt3ni parti mn taniya.
+    return (((tv.tv_sec * 1000) + (tv.tv_usec / 1000))); // had return ky 3tina w9t b millisecond ==> kt3ni parti mn taniya.
 }
 
 void print_status(t_philo *philo,char *str)

@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:07:48 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/04 16:02:59 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/05 15:35:55 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@
 
 typedef struct s_info
 {
-    int philo;
-    int die;
-    int eating;
-    int sleeping;
-    int nbr_eat;
-    int overflow;
+    int philo; //nbr fhilo
+    int die; // w9t ila mklach fih khaso imout 
+    int eating; // w9t li khas ib9a iyakol fih
+    int sleeping; // w9t li khaso in3s fih
+    int nbr_eat; // nbr ta3 chehal mn mra khaso iyakol
+    int overflow; // hada drto 3la hsab overflow fi atoi
     unsigned long start_time; // BACH N9DR NHSB W9T.
     int dead; // FALG BACH N3RF BLI CHI PHILO MAT.
     pthread_mutex_t lock_print; //BACH NPRINTI BLAMA IW93 LIYA MOCHKIL.
@@ -36,24 +36,15 @@ typedef struct s_info
 
 typedef struct s_philo
 {
-    int id;
-    unsigned long last_eat;
+    int id; // hada id ta3 filo
+    unsigned long last_eat; // w9t ta3 akhir mra kla fiha
+    int nbr_eating;
     t_info *info;
     pthread_t philo;
-    pthread_mutex_t left_fork;
+    pthread_mutex_t left_fork; 
     pthread_mutex_t *right_fork;
     
 } t_philo;
-// typedef struct s_data
-// {
-//     int id;
-//     int *die_philo;
-//     pthread_t philo;
-//     t_info info;
-//     size_t time_start;
-//     size_t time_up;
-//     pthread_mutex_t *forks;
-// } t_data;
 
 
 int checking_nbr(char *str);
@@ -66,5 +57,16 @@ void ft_usleep(unsigned long time);
 void *routine_philo(void *arg);
 void print_status(t_philo *philo,char *str);
 int check_int(int ac,t_info test);
+void *monitor_thread(void *arg);
 
 #endif
+// typedef struct s_data
+// {
+//     int id;
+//     int *die_philo;
+//     pthread_t philo;
+//     t_info info;
+//     size_t time_start;
+//     size_t time_up;
+//     pthread_mutex_t *forks;
+// } t_data;
