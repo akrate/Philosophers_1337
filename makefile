@@ -6,7 +6,7 @@
 #    By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/25 13:48:45 by aoussama          #+#    #+#              #
-#    Updated: 2025/07/04 13:35:03 by aoussama         ###   ########.fr        #
+#    Updated: 2025/07/06 13:49:44 by aoussama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = philo
 SRC = main.c init_struct.c routine.c tools.c utils.c
 OBJS = $(SRC:.c=.o)
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g3
 
 all: $(NAME)
 

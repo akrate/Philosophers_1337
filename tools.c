@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 23:03:39 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/05 15:40:49 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/06 14:14:06 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ unsigned long get_time_ms()
 void print_status(t_philo *philo,char *str)
 {
     pthread_mutex_lock(&philo->info->lock_print);
+    if (philo->info->dead == 0)
         printf("%ld %d %s\n",get_time_ms() - philo->info->start_time,philo->id,str);
     pthread_mutex_unlock(&philo->info->lock_print);
 }

@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:07:48 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/05 15:35:55 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/06 14:56:53 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_info
     int dead; // FALG BACH N3RF BLI CHI PHILO MAT.
     pthread_mutex_t lock_print; //BACH NPRINTI BLAMA IW93 LIYA MOCHKIL.
     pthread_mutex_t lock_dead; // BACH MCHOF WACH MAT LIYA CHI PHILO BLAMA IW93 CHIMOCHKIL.
+    pthread_mutex_t lock_eat;
+
 } t_info;
 
 typedef struct s_philo
@@ -41,7 +43,8 @@ typedef struct s_philo
     int nbr_eating;
     t_info *info;
     pthread_t philo;
-    pthread_mutex_t left_fork; 
+    pthread_mutex_t lock_eat_last;
+    pthread_mutex_t left_fork;
     pthread_mutex_t *right_fork;
     
 } t_philo;

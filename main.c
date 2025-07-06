@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:07:08 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/05 14:40:43 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/06 14:01:55 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int main(int ac,char **av)
         pthread_join(philosophers[i].philo,NULL);
         i++;
     }
+    pthread_join(monitor,NULL);
     return (0);
 }
 
