@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 23:03:39 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/06 14:14:06 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/06 17:20:40 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ void ft_usleep(unsigned long time)
     start = get_time_ms();
     while(get_time_ms() - start < time)
     {
-        usleep(100);
+        usleep(time * 1000);
     }
 }
