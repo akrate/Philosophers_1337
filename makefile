@@ -6,12 +6,12 @@
 #    By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/25 13:48:45 by aoussama          #+#    #+#              #
-#    Updated: 2025/07/07 15:43:58 by aoussama         ###   ########.fr        #
+#    Updated: 2025/07/08 17:32:37 by aoussama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
-SRC = main.c init_struct.c routine.c tools.c utils.c
+SRC = main.c init_struct.c routine.c tools.c utils.c tools_routine.c
 OBJS = $(SRC:.c=.o)
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -pthread

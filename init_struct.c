@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 22:54:48 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/06 20:35:37 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/08 20:04:43 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,29 @@ t_info init_struct(int ac,char **av)
     return (info);
 }
 
-t_philo *init_data(t_info info)
+t_philo *init_data(t_info *info)
 {
     t_philo *philo;
     int i;
 
-    philo = malloc(sizeof(t_philo) * info.philo);
+    philo = malloc(sizeof(t_philo) * info->philo);
     if (philo ==  NULL)
         return (NULL);
     i = 0;
-    while(i < info.philo)
+    while(i < info->philo)
     {
         philo[i].id = i + 1;
         pthread_mutex_init(&philo[i].left_fork,NULL);
-        
         i++;
     }
     i = 0;
-    while (i < info.philo)
+    while (i < info->philo)
     {
-        philo[i].right_fork = &philo[(i + 1) % info.philo].left_fork;
+        philo[i].right_fork = &philo[(i + 1) % info->philo].left_fork;
         i++;
     }
+    if (philo != NULL)
+        init_info_and_link_philos(philo,info);
     return (philo);
 }
 

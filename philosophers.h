@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:07:48 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/08 11:58:27 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/08 19:55:17 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_philo
 
 int checking_nbr(char *str);
 long	ft_atoi_use(char *str);
-t_philo *init_data(t_info info);
+t_philo *init_data(t_info *info);
 void init_info_and_link_philos(t_philo *philo,t_info *info);
 t_info init_struct(int ac,char **av);
 unsigned long get_time_ms();
@@ -61,5 +61,11 @@ void *routine_philo(void *arg);
 void print_status(t_philo *philo,char *str);
 int check_int(int ac,t_info test);
 void *monitor_thread(void *arg);
+/////////////////////////tools routine
+
+void get_last_eat(t_philo *philo);
+void mutex_unlock(t_philo *philo);
+void mutex_lock_right(t_philo *philo);
+void mutex_lock_left(t_philo *philo);
 
 #endif
