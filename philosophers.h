@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:07:48 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/06 14:56:53 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:58:27 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_info
     int dead; // FALG BACH N3RF BLI CHI PHILO MAT.
     pthread_mutex_t lock_print; //BACH NPRINTI BLAMA IW93 LIYA MOCHKIL.
     pthread_mutex_t lock_dead; // BACH MCHOF WACH MAT LIYA CHI PHILO BLAMA IW93 CHIMOCHKIL.
-    pthread_mutex_t lock_eat;
+    pthread_mutex_t lock_eat; //
 
 } t_info;
 
@@ -63,13 +63,3 @@ int check_int(int ac,t_info test);
 void *monitor_thread(void *arg);
 
 #endif
-// typedef struct s_data
-// {
-//     int id;
-//     int *die_philo;
-//     pthread_t philo;
-//     t_info info;
-//     size_t time_start;
-//     size_t time_up;
-//     pthread_mutex_t *forks;
-// } t_data;

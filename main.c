@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:07:08 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/06 18:10:35 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:58:45 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ int main(int ac,char **av)
     }
     pthread_create(&monitor,NULL,&monitor_thread,philosophers);
     i = 0;
+    pthread_join(monitor,NULL);
     while (i < info.philo)
     {
         pthread_join(philosophers[i].philo,NULL);
         i++;
     }
-    pthread_join(monitor,NULL);
     return (0);
 }
 
