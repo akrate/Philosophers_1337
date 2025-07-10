@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:07:48 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/08 19:55:17 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/09 16:38:41 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_info
     pthread_mutex_t lock_print; //BACH NPRINTI BLAMA IW93 LIYA MOCHKIL.
     pthread_mutex_t lock_dead; // BACH MCHOF WACH MAT LIYA CHI PHILO BLAMA IW93 CHIMOCHKIL.
     pthread_mutex_t lock_eat; //
-
+    
 } t_info;
 
 typedef struct s_philo
@@ -42,7 +42,7 @@ typedef struct s_philo
     unsigned long last_eat; // w9t ta3 akhir mra kla fiha
     int nbr_eating;
     t_info *info;
-    pthread_t philo;
+    pthread_t *philo;
     pthread_mutex_t lock_eat_last;
     pthread_mutex_t left_fork;
     pthread_mutex_t *right_fork;
@@ -56,9 +56,9 @@ t_philo *init_data(t_info *info);
 void init_info_and_link_philos(t_philo *philo,t_info *info);
 t_info init_struct(int ac,char **av);
 unsigned long get_time_ms();
-void ft_usleep(unsigned long time);
+void ft_usleep(unsigned long time,t_philo *philo);
 void *routine_philo(void *arg);
-void print_status(t_philo *philo,char *str);
+void print_status(t_philo *philo,char *str,int i);
 int check_int(int ac,t_info test);
 void *monitor_thread(void *arg);
 /////////////////////////tools routine

@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 23:03:39 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/07 15:03:54 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:25:04 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,34 @@ unsigned long get_time_ms()
     return (((tv.tv_sec * 1000) + (tv.tv_usec / 1000))); // had return ky 3tina w9t b millisecond ==> kt3ni parti mn taniya.
 }
 
-void print_status(t_philo *philo,char *str)
+void print_status(t_philo *philo,char *str,int i)
 {
     pthread_mutex_lock(&philo->info->lock_print);
+    pthread_mutex_lock(&philo->info->lock_dead);
     if (philo->info->dead == 0)
         printf("%ld %d %s\n",get_time_ms() - philo->info->start_time,philo->id,str);
+    if (i == 1)
+        philo->info->dead = 1;
+    pthread_mutex_unlock(&philo->info->lock_dead);
     pthread_mutex_unlock(&philo->info->lock_print);
 }
-void ft_usleep(unsigned long time)
+void ft_usleep(unsigned long time,t_philo *philo)
 {
     unsigned long start;
     
     start = get_time_ms();
     while(get_time_ms() - start < time)
     {
+
+        pthread_mutex_lock(&philo->info->lock_dead);
+        if (philo->info->dead != 0)
+        {
+            pthread_mutex_unlock(&philo->info->lock_dead); 
+            break;
+        }
+        pthread_mutex_unlock(&philo->info->lock_dead);
+        if (get_time_ms() - start >= time)
+            break;
         usleep(100);
     }
 }

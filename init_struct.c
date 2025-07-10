@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 22:54:48 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/08 20:04:43 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/09 15:17:05 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_philo *init_data(t_info *info)
     while(i < info->philo)
     {
         philo[i].id = i + 1;
+        philo[i].philo = malloc(sizeof(pthread_t));
         pthread_mutex_init(&philo[i].left_fork,NULL);
         i++;
     }
@@ -72,6 +73,7 @@ void init_info_and_link_philos(t_philo *philo,t_info *info)
         philo[i].info = info;
         philo[i].nbr_eating = 0;
         pthread_mutex_init(&philo[i].lock_eat_last,NULL);
+
         i++;
     }
 }

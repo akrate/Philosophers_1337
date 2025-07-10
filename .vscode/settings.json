@@ -9,6 +9,7 @@
         "functional": "c",
         "tuple": "c",
         "utility": "c",
-        "variant": "c"
+        "variant": "c",
+        "philosophers.h": "c"
     }
 }

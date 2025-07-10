@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:28:29 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/08 19:55:30 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/09 16:40:50 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 void mutex_lock_left(t_philo *philo)
 {
     pthread_mutex_lock(&philo->left_fork);
-    print_status(philo,"has taken a fork");
+    print_status(philo,"has taken a fork",0);
     pthread_mutex_lock(philo->right_fork);
-    print_status(philo,"has taken a fork");
+    print_status(philo,"has taken a fork",0);
 }
 void mutex_lock_right(t_philo *philo)
 {
     pthread_mutex_lock(philo->right_fork);
-    print_status(philo,"has taken a fork");
+    print_status(philo,"has taken a fork",0);
     pthread_mutex_lock(&philo->left_fork);
-    print_status(philo,"has taken a fork");
+    print_status(philo,"has taken a fork",0);
 }
 void mutex_unlock(t_philo *philo)
 {
