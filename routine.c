@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 17:40:57 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/10 20:05:52 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/11 14:38:01 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int ft_die(t_philo *philo)
 }
 void eat_routine(t_philo *philo)
 {
-    print_status(philo,"is eating",0);
     get_last_eat(philo);
+    print_status(philo,"is eating",0);
     ft_usleep(philo->info->eating,philo);
     pthread_mutex_lock(&philo->info->lock_eat);
     philo->nbr_eating++;
@@ -41,9 +41,9 @@ void thinking_routine(t_philo *philo)
     int thinking_time;
     
     print_status(philo,"is thinking",0);
-    thinking_time = philo->info->die - philo->info->eating - philo->info->sleeping;
+    thinking_time = (philo->info->die - philo->info->eating) - philo->info->sleeping;
     if (thinking_time > 60)
-        ft_usleep((unsigned long)thinking_time - 1,philo);
+        ft_usleep((unsigned long)thinking_time - 10,philo);
 }
 void *routine_philo(void *arg)
 {
@@ -53,14 +53,18 @@ void *routine_philo(void *arg)
     pthread_mutex_lock(&philo->lock_eat_last);
     philo->last_eat = get_time_ms();
     pthread_mutex_unlock(&philo->lock_eat_last);
-    if (philo->id % 2 == 0)
-        usleep(130);
     while (!ft_die(philo))
     {
-        if (philo->id % 2 != 0)
+        if (philo->id % 2 == 0)
+        {
+            
             mutex_lock_left(philo);
+        }
         else
+        {
+            usleep(100);
             mutex_lock_right(philo);
+        }
         eat_routine(philo);
         if (ft_die(philo) == 1)
             return (mutex_unlock(philo),NULL);
@@ -103,7 +107,7 @@ void *monitor_thread(void *arg)
     int i;
     
     philo = (t_philo *)arg;
-    usleep(140);
+    usleep(20 * (philo->info->philo / 2));
     while (1)
     {
         i = 0;
@@ -121,7 +125,6 @@ void *monitor_thread(void *arg)
         }
         if (monitor_helper(philo))
             return (ft_lock_dead(philo),NULL);
-        usleep(50);
     }
     return (NULL);
 }
