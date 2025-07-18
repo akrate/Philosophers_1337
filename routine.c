@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 17:40:57 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/18 09:18:23 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/18 10:07:20 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	*routine_philo(void *arg)
 	philo->last_eat = get_time_ms();
 	pthread_mutex_unlock(&philo->lock_eat_last);
 	if (philo->id % 2 != 0)
-			usleep(50);
+		usleep(50);
 	while (!ft_die(philo))
 	{
 		if (philo->id % 2 == 0)
