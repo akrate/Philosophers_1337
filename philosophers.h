@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:07:48 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/12 14:27:20 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/18 08:54:33 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ typedef struct s_info
 	int				dead;
 	pthread_mutex_t	lock_print;
 	pthread_mutex_t	lock_dead;
-	pthread_mutex_t	lock_eat;
-
 }					t_info;
 
 typedef struct s_philo
@@ -42,7 +40,8 @@ typedef struct s_philo
 	unsigned long	last_eat;
 	int				nbr_eating;
 	t_info			*info;
-	pthread_t		*philo;
+	pthread_t		philo;
+	pthread_mutex_t	lock_count_eat;
 	pthread_mutex_t	lock_eat_last;
 	pthread_mutex_t	left_fork;
 	pthread_mutex_t	*right_fork;
@@ -66,4 +65,8 @@ void				mutex_unlock(t_philo *philo);
 void				mutex_lock_right(t_philo *philo);
 void				mutex_lock_left(t_philo *philo);
 
+void				mutex_unlock(t_philo *philo);
+void				sleeping_routine(t_philo *philo);
+void				ft_lock_dead(t_philo *philo);
+int					ft_die(t_philo *philo);
 #endif

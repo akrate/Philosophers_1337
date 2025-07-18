@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 23:03:39 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/12 14:26:18 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/15 16:20:08 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,6 @@ void	ft_usleep(unsigned long time, t_philo *philo)
 		pthread_mutex_unlock(&philo->info->lock_dead);
 		if (get_time_ms() - start >= time)
 			break ;
-		usleep(50);
+		usleep(1000);
 	}
 }

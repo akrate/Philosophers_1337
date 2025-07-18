@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 13:59:30 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/12 14:28:14 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/14 11:11:07 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,20 @@
 
 int	check_int(int ac, t_info test)
 {
-	if (test.eating == -1)
+	if (test.eating == -1 || test.eating == 0)
 		return (1);
-	if (test.philo == -1)
+	if (test.philo == -1 || test.philo == 0)
 		return (1);
-	if (test.philo == 0)
-	{
-		printf("number of philosofers is not correct ");
-		printf("please use number bigger than 0\n");
+	if (test.sleeping == -1 || test.sleeping == 0)
 		return (1);
-	}
-	if (test.sleeping == -1)
-		return (1);
-	if (test.die == -1)
+	if (test.die == -1 || test.die == 0)
 		return (1);
 	if (ac == 6)
 	{
-		if (test.nbr_eat == -1)
+		if (test.nbr_eat == -1 || test.nbr_eat == 0)
+		{
 			return (1);
+		}
 	}
 	return (0);
 }

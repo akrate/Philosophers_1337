@@ -6,7 +6,7 @@
 /*   By: aoussama <aoussama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:28:29 by aoussama          #+#    #+#             */
-/*   Updated: 2025/07/12 14:25:28 by aoussama         ###   ########.fr       */
+/*   Updated: 2025/07/15 16:32:22 by aoussama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	mutex_lock_left(t_philo *philo)
 
 void	mutex_lock_right(t_philo *philo)
 {
+	usleep(100);
 	pthread_mutex_lock(philo->right_fork);
 	print_status(philo, "has taken a fork", 0);
 	pthread_mutex_lock(&philo->left_fork);
